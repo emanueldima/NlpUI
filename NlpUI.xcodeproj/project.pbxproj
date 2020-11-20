@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		423B60682567D9A3007EDE79 /* WordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423B60672567D9A3007EDE79 /* WordView.swift */; };
 		4248BC1A255EAB4D00C504FF /* NlpUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4248BC19255EAB4D00C504FF /* NlpUIApp.swift */; };
 		4248BC1C255EAB4D00C504FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4248BC1B255EAB4D00C504FF /* ContentView.swift */; };
 		4248BC1E255EAB4E00C504FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4248BC1D255EAB4E00C504FF /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		423B60672567D9A3007EDE79 /* WordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
 		4248BC16255EAB4D00C504FF /* NlpUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NlpUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4248BC19255EAB4D00C504FF /* NlpUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NlpUIApp.swift; sourceTree = "<group>"; };
 		4248BC1B255EAB4D00C504FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		4248BC18255EAB4D00C504FF /* NlpUI */ = {
 			isa = PBXGroup;
 			children = (
+				423B60672567D9A3007EDE79 /* WordView.swift */,
 				4248BC19255EAB4D00C504FF /* NlpUIApp.swift */,
 				4248BC1B255EAB4D00C504FF /* ContentView.swift */,
 				4248BC1D255EAB4E00C504FF /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4248BC23255EAB4E00C504FF /* Persistence.swift in Sources */,
+				423B60682567D9A3007EDE79 /* WordView.swift in Sources */,
 				4248BC1C255EAB4D00C504FF /* ContentView.swift in Sources */,
 				4248BC26255EAB4E00C504FF /* NlpUI.xcdatamodeld in Sources */,
 				4248BC1A255EAB4D00C504FF /* NlpUIApp.swift in Sources */,

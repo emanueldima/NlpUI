@@ -66,13 +66,6 @@ struct ContentView: View {
     }
 }
 
-struct WordView: View {
-    var item: Item
-    var body: some View {
-        Text("\(item.name ?? "[empty]")")
-    }
-}
-
 struct TextForItem: View {
     var item: Item
     var body: some View {
@@ -121,14 +114,10 @@ func fatal(error: Error) {
     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
 }
 
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        }
-    }
-}
-
-
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//        }
+//    }
+//}
