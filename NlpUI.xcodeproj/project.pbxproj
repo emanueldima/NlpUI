@@ -37,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		423B60672567D9A3007EDE79 /* WordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordView.swift; sourceTree = "<group>"; };
+		423B606C2567EC6A007EDE79 /* NlpUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NlpUI.entitlements; sourceTree = "<group>"; };
 		4248BC16255EAB4D00C504FF /* NlpUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NlpUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4248BC19255EAB4D00C504FF /* NlpUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NlpUIApp.swift; sourceTree = "<group>"; };
 		4248BC1B255EAB4D00C504FF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 		4248BC18255EAB4D00C504FF /* NlpUI */ = {
 			isa = PBXGroup;
 			children = (
+				423B606C2567EC6A007EDE79 /* NlpUI.entitlements */,
 				423B60672567D9A3007EDE79 /* WordView.swift */,
 				4248BC19255EAB4D00C504FF /* NlpUIApp.swift */,
 				4248BC1B255EAB4D00C504FF /* ContentView.swift */,
@@ -429,6 +431,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NlpUI/NlpUI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NlpUI/Preview Content\"";
 				DEVELOPMENT_TEAM = 35U56HHZAU;
@@ -441,6 +445,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dima.emanuel.NlpUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -451,6 +456,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NlpUI/NlpUI.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NlpUI/Preview Content\"";
 				DEVELOPMENT_TEAM = 35U56HHZAU;
@@ -463,6 +470,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dima.emanuel.NlpUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
