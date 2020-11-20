@@ -1,35 +1,37 @@
-//
-//  ContentView.swift
-//  NlpUI
-//
-//  Created by Emanuel Dima on 13.11.20.
-//
-
 import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @State private var name: String = ""
+
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        NavigationView {
+            VStack {
+                AddItemRow(name: $name, addItem: addItem)
+                List {
+                    ForEach(items) { item in
+                        Text("\(item.name ?? "[empty]") @ \(item.timestamp!, formatter: itemFormatter)")
+                    }
+                    .onDelete(perform: deleteItems)
+                }
+                .listStyle(PlainListStyle())
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+            .navigationBarTitle("Words")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    HStack {
+                        #if os(iOS)
+                        EditButton()
+                        #endif
+                    }
+                }
             }
         }
     }
@@ -38,6 +40,8 @@ struct ContentView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.name = name
+            name = ""
 
             do {
                 try viewContext.save()
@@ -66,6 +70,35 @@ struct ContentView: View {
     }
 }
 
+
+struct AddItemRow: View {
+    @Binding var name: String
+    var addItem: () -> Void
+    
+    var body: some View {
+        HStack {
+            TextField("Enter a word", text: $name, onCommit: addItem)
+                .padding(8)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color.accentColor, lineWidth: 1)
+                )
+                .padding(.leading, 8)
+            Button(action: addItem) {
+                HStack{
+                    Text("Add").padding(.trailing, 4)
+                    Image(systemName: "plus.circle")
+                }.padding(10)
+                .foregroundColor(.white)
+                .background(Color.accentColor)
+                .cornerRadius(8)
+            }
+            .padding(.trailing, 8)
+        }
+    }
+}
+
+
 private let itemFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .short
@@ -75,6 +108,8 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        Group {
+            ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        }
     }
 }
