@@ -17,7 +17,9 @@ struct ContentView: View {
                 AddItemRow(name: $name, addItem: addItem)
                 List {
                     ForEach(items) { item in
-                        Text("\(item.name ?? "[empty]") @ \(item.timestamp!, formatter: itemFormatter)")
+                        NavigationLink(destination: WordView(item: item)) {
+                            TextForItem(item: item)
+                        }
                     }
                     .onDelete(perform: deleteItems)
                 }
@@ -46,10 +48,7 @@ struct ContentView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                fatal(error: error)
             }
         }
     }
@@ -61,15 +60,32 @@ struct ContentView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                fatal(error: error)
             }
         }
     }
 }
 
+struct WordView: View {
+    var item: Item
+    var body: some View {
+        Text("\(item.name ?? "[empty]")")
+    }
+}
+
+struct TextForItem: View {
+    var item: Item
+    var body: some View {
+        Text("\(item.name ?? "[empty]") @ \(item.timestamp!, formatter: itemFormatter)")
+    }
+
+    private let itemFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
+}
 
 struct AddItemRow: View {
     @Binding var name: String
@@ -98,13 +114,14 @@ struct AddItemRow: View {
     }
 }
 
+func fatal(error: Error) {
+    // Replace this implementation with code to handle the error appropriately.
+    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+    let nsError = error as NSError
+    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+}
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -113,3 +130,5 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
+
+
