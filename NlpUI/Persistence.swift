@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  NlpUI
-//
-//  Created by Emanuel Dima on 13.11.20.
-//
-
 import CoreData
 
 struct PersistenceController {

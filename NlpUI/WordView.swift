@@ -2,8 +2,6 @@ import SwiftUI
 import CoreData
 import NaturalLanguage
 
-
-
 struct WordView: View {
     var item: Item
     var body: some View {
